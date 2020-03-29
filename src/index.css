@@ -1,3 +1,7 @@
+:root {
+  --cursor: default;
+}
+
 body {
   margin: 0;
   font-family: serif;

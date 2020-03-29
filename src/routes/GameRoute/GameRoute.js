@@ -1,7 +1,7 @@
 import React from 'react';
 import './GameRoute.css';
 
-import Entity from '../../components/Entity/Entity';
+import Game from '../../components/Game/Game';
 import Nav from '../../components/Nav/Nav';
 
 export default class GameRoute extends React.Component {
@@ -9,19 +9,20 @@ export default class GameRoute extends React.Component {
     inspect: false
   }
 
-  componentDidMount() {
+  inspectToggle = () => {
+    const cursor = this.state.inspect ? 'default' : 'help';
+    document.documentElement.style.setProperty('--cursor', cursor);
 
+    const flip = !this.state.inspect;
+    this.setState({ inspect: flip});
   }
 
   render() {
+    console.log(this.state.inspect);
     return (
-      <div className='Game'>
-        <Nav />
-        <Entity
-          x={100}
-          y={100}
-          size={1}
-        />
+      <div className='GameRoute'>
+        <Nav inspectToggle={this.inspectToggle} />
+        <Game />
       </div>
     );
   }

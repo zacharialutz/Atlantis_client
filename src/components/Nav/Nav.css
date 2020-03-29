@@ -3,4 +3,15 @@
 	padding: 4px;
 	background-color: lightgray;
 	border-bottom: 1px solid black;
+	font-size: 18px;
+}
+
+.Nav a {
+	text-decoration: none;
+}
+
+.Nav a:hover,
+.Nav span:hover {
+	text-decoration: underline;
+	cursor: pointer
 }
