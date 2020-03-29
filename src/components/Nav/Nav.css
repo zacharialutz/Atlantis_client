@@ -4,14 +4,14 @@
 	background-color: lightgray;
 	border-bottom: 1px solid black;
 	font-size: 18px;
+	font-weight: bold;
 }
 
 .Nav a {
 	text-decoration: none;
 }
 
-.Nav a:hover,
-.Nav span:hover {
+.Nav a:hover {
 	text-decoration: underline;
 	cursor: pointer
 }
