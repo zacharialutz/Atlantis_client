@@ -1,4 +1,5 @@
 import React from 'react';
+import InspectorCtx from '../../contexts/InspectorCtx/InspectorCtx';
 import './GameRoute.css';
 
 import Game from '../../components/Game/Game';
@@ -7,19 +8,48 @@ import Nav from '../../components/Nav/Nav';
 
 export default class GameRoute extends React.Component {
   state = {
-    inspect: false
+    inspect: false,
+    hover: null,
+    focus: null // selected entity
   }
 
-  inspectToggle = () => {
-    const flip = !this.state.inspect;
-    this.setState({ inspect: flip});
+  inspectSelect = () => {
+    this.setState({ inspect: true });
+  }
+  inspectClose = () => {
+    this.setState({ inspect: false });
+  }
+  inspectHoverOn = (name) => {
+    this.setState({ hover: name });
+  }
+  inspectHoverOff = () => {
+    this.setState({ hover: null });
   }
 
   render() {
+    const state = this.state;
+    console.log(state);
+
+    const ctxInspector = {
+      inspect: state.inspect,
+      hover: state.hover,
+      focus: state.focus,
+      inspectSelect: this.inspectSelect,
+      inspectClose: this.inspectClose,
+      inspectHoverOn: this.inspectHoverOn,
+      inspectHoverOff: this.inspectHoverOff
+    }
+
     return (
       <div className='GameRoute'>
         <Nav />
-        <Inspector inspect={this.state.inspect} />
+        <InspectorCtx.Provider value={ctxInspector}>
+          <Inspector
+            inspect={state.inspect}
+            focus={state.focus}
+            close={this.inspectClose}
+          />
+        </InspectorCtx.Provider>
         <Game />
       </div>
     );
