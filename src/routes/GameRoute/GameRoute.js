@@ -1,5 +1,5 @@
 import React from 'react';
-import InspectorCtx from '../../contexts/InspectorCtx/InspectorCtx';
+import GameContext from '../../contexts/GameContext/GameContext';
 import './GameRoute.css';
 
 import Game from '../../components/Game/Game';
@@ -30,7 +30,7 @@ export default class GameRoute extends React.Component {
     const state = this.state;
     console.log(state);
 
-    const ctxInspector = {
+    const ctx = {
       inspect: state.inspect,
       hover: state.hover,
       focus: state.focus,
@@ -42,15 +42,15 @@ export default class GameRoute extends React.Component {
 
     return (
       <div className='GameRoute'>
-        <Nav />
-        <InspectorCtx.Provider value={ctxInspector}>
+        <GameContext.Provider value={ctx}>
+          <Nav />
           <Inspector
             inspect={state.inspect}
             focus={state.focus}
             close={this.inspectClose}
           />
-        </InspectorCtx.Provider>
-        <Game />
+          <Game />
+        </GameContext.Provider>
       </div>
     );
   }

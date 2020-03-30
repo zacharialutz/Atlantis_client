@@ -1,34 +1,33 @@
 import React from 'react';
+import GameContext from '../../contexts/GameContext/GameContext';
 import './Entity.css';
 
 export default class Entity extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.size = props.size; // number of tiles wide (all entities are square for now)
-    this.flags = props.flags;
-
-    this.state = {
-      x: props.x,
-      y: props.y,
-      hp: 100,
-    }
-  }
-
   static defaultProps = {
-    size: 1,
+    name: null,
+    size: 1, // number of tiles wide (all entities are square for now)
+    x: 0,
+    y: 0,
+    hp: 100,
     flags: {
       flammable: false,
       selectable: false
     }
   }
 
+  static contextType = GameContext;
+
   render() {
-    const selectable = this.flags.selectable ? ' selectable' : '';
+    const ctx = this.context;
+    const selectable = this.props.flags.selectable ? ' selectable' : '';
 
     return (
-      <div className={`Entity${selectable}`}>
-        
+      <div
+        className={`Entity${selectable}`}
+        onMouseEnter={() => ctx.inspectHoverOn(this.props.name)}
+        onMouseLeave={() => ctx.inspectHoverOff()}
+      >
+
       </div>
     );
   }
