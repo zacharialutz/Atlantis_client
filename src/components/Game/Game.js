@@ -14,6 +14,13 @@ export default class Game extends React.Component {
           flags={{ selectable: true }}
           name={'test square'}
           />
+        <Entity
+          x={100}
+          y={100}
+          size={1}
+          flags={{ selectable: true }}
+          name={'test square 2'}
+          />
       </div>
     );
   }

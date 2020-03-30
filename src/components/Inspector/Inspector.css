@@ -1,5 +1,6 @@
 .Inspector {
 	position: fixed;
+	width: 40%;
 	right: 45px;
 	top: 16px;
 }

@@ -8,16 +8,15 @@ import Nav from '../../components/Nav/Nav';
 
 export default class GameRoute extends React.Component {
   state = {
-    inspect: false,
     hover: null,
     focus: null // selected entity
   }
 
-  inspectSelect = () => {
-    this.setState({ inspect: true });
+  inspectSelect = (data) => {
+    this.setState({ focus: data });
   }
   inspectClose = () => {
-    this.setState({ inspect: false });
+    this.setState({ focus: null });
   }
   inspectHoverOn = (name) => {
     this.setState({ hover: name });
@@ -31,7 +30,6 @@ export default class GameRoute extends React.Component {
     console.log(state);
 
     const ctx = {
-      inspect: state.inspect,
       hover: state.hover,
       focus: state.focus,
       inspectSelect: this.inspectSelect,

@@ -9,9 +9,14 @@ export default class Entity extends React.Component {
     x: 0,
     y: 0,
     hp: 100,
+
     flags: {
-      flammable: false,
-      selectable: false
+      selectable: false,
+      solid: false
+    },
+    inventory: {},
+    status: {
+      onFire: false
     }
   }
 
@@ -19,11 +24,13 @@ export default class Entity extends React.Component {
 
   render() {
     const ctx = this.context;
-    const selectable = this.props.flags.selectable ? ' selectable' : '';
+    const selectable = this.props.flags.selectable;
+    const selectableClass = selectable ? ' selectable' : '';
 
     return (
       <div
-        className={`Entity${selectable}`}
+        className={`Entity${selectableClass}`}
+        onClick={() => { if (selectable) ctx.inspectSelect(this.props) }}
         onMouseEnter={() => ctx.inspectHoverOn(this.props.name)}
         onMouseLeave={() => ctx.inspectHoverOff()}
       >
