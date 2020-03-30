@@ -1,6 +1,14 @@
-.Inspector {
+.InspectorPanel {
 	position: fixed;
 	width: 40%;
+	right: 0;
+	top: 32px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.InspectorHover {
+	position: fixed;
+	bottom: 32px;
 	right: 45px;
-	top: 16px;
 }

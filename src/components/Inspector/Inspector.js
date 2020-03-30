@@ -11,11 +11,11 @@ export default class Inspector extends React.Component {
 
     return (
       <div className='Inspector'>
-        <div className='InspectorHeader'>
+        <div className='InspectorHover'>
           <h3>{ctx.hover}</h3>
         </div>
         {data &&
-          <section className='InspectorBody'>
+          <section className='InspectorPanel'>
             <h3>{data.name}</h3>
             <button className='btn btn-close' onClick={() => ctx.inspectClose()}>X</button>
             <p>
